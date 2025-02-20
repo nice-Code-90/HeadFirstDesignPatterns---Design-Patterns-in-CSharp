@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategy", "Strategy\Strategy.csproj", "{742EBCCD-E4F2-4070-99BC-8AFCB1E2E029}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategy.Duck", "Strategy\Strategy.Duck.csproj", "{742EBCCD-E4F2-4070-99BC-8AFCB1E2E029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Observer.WeatherMonitoring", "Observer.WeatherMonitoring\Observer.WeatherMonitoring.csproj", "{28C674DD-557C-4FEE-ABBA-D09FD81DDA6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{742EBCCD-E4F2-4070-99BC-8AFCB1E2E029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742EBCCD-E4F2-4070-99BC-8AFCB1E2E029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742EBCCD-E4F2-4070-99BC-8AFCB1E2E029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C674DD-557C-4FEE-ABBA-D09FD81DDA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C674DD-557C-4FEE-ABBA-D09FD81DDA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C674DD-557C-4FEE-ABBA-D09FD81DDA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C674DD-557C-4FEE-ABBA-D09FD81DDA6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

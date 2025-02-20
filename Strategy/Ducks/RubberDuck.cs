@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Strategy.Ducks
 {
+    /// <summary>
+    /// RubberDuck class
+    /// </summary>
     public class RubberDuck : Duck
     {
         public RubberDuck()
