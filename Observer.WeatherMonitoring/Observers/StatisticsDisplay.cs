@@ -1,33 +1,25 @@
-﻿using System;
-using Observer.WeatherMonitoring.Interfaces;
-using Observer.WeatherMonitoring.Subjects;
+﻿using Observer.WeatherMonitoring.Interfaces;
 
 namespace Observer.WeatherMonitoring.Observers
 {
-    public class StatisticsDisplay : IObserver<WeatherData>, IDisplayElement
+    public class StatisticsDisplay : IObserver, IDisplayElement
     {
         private float maxTemp = 0.0f;
-        private float minTemp = 200f;
+        private float minTemp = 200;
         private float tempSum = 0.0f;
         private int numReadings;
-        private IDisposable subscription;
+        private readonly ISubject weatherData;
 
-        public StatisticsDisplay()
+        public StatisticsDisplay(ISubject weatherData)
         {
+            this.weatherData = weatherData;
+            weatherData.RegisterObserver(this);
         }
 
-        public void Subscribe(IObservable<WeatherData> provider)
+        public void Update(float temperature, float humidity, float pressure)
         {
-            if (provider != null)
-                subscription = provider.Subscribe(this);
-        }
-
-        public void OnNext(WeatherData value)
-        {
-            float temperature = value.GetTemperature();
             tempSum += temperature;
             numReadings++;
-
             if (temperature > maxTemp)
             {
                 maxTemp = temperature;
@@ -36,26 +28,12 @@ namespace Observer.WeatherMonitoring.Observers
             {
                 minTemp = temperature;
             }
-
             Display();
-        }
-
-        public void OnError(Exception error)
-        {
-        }
-
-        public void OnCompleted()
-        {
         }
 
         public void Display()
         {
-            Console.WriteLine($"Avg/Max/Min temperature = {tempSum / numReadings:F1}/{maxTemp:F1}/{minTemp:F1}");
-        }
-
-        public void Unsubscribe()
-        {
-            subscription?.Dispose();
+            Console.WriteLine($"Avg/Max/Min temperature = {tempSum / numReadings}/{maxTemp}/{minTemp}");
         }
     }
 }

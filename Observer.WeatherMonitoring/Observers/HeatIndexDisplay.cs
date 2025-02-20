@@ -1,46 +1,27 @@
-﻿using System;
-using Observer.WeatherMonitoring.Interfaces;
-using Observer.WeatherMonitoring.Subjects;
+﻿using Observer.WeatherMonitoring.Interfaces;
 
 namespace Observer.WeatherMonitoring.Observers
 {
-    public class HeatIndexDisplay : IObserver<WeatherData>, IDisplayElement
+    public class HeatIndexDisplay : IObserver, IDisplayElement
     {
         private float heatIndex = 0.0f;
-        private IDisposable subscription;
+        private readonly ISubject weatherData;
 
-        public HeatIndexDisplay()
+        public HeatIndexDisplay(ISubject weatherData)
         {
+            this.weatherData = weatherData;
+            weatherData.RegisterObserver(this);
         }
 
-        public void Subscribe(IObservable<WeatherData> provider)
+        public void Update(float temperature, float humidity, float pressure)
         {
-            if (provider != null)
-                subscription = provider.Subscribe(this);
-        }
-
-        public void OnNext(WeatherData value)
-        {
-            heatIndex = ComputeHeatIndex(value.GetTemperature(), value.GetHumidity());
+            heatIndex = ComputeHeatIndex(temperature, humidity);
             Display();
-        }
-
-        public void OnError(Exception error)
-        {
-        }
-
-        public void OnCompleted()
-        {
         }
 
         public void Display()
         {
-            Console.WriteLine($"Heat index is {heatIndex:F1}");
-        }
-
-        public void Unsubscribe()
-        {
-            subscription?.Dispose();
+            Console.WriteLine($"Heat index is {heatIndex}");
         }
 
         private float ComputeHeatIndex(float t, float rh)
