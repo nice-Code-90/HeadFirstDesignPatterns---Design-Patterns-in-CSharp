@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Strategy.Behaviors.FlyBehaviors
 {
+    /// <summary>
+	/// FlyWithoutWings
+	/// </summary>
     public class FlyNoWay : IFlyBehavior
     {
         public void Fly()

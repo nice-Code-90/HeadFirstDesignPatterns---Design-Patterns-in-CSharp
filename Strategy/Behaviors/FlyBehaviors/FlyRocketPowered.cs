@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy.Behaviors.QuackBehaviors
+namespace Strategy.Behaviors.FlyBehaviors
 {
     /// <summary>
-    /// MuteQuack
+    /// FlyRocketPowered
     /// </summary>
-    public class MuteQuack : IQuackBehavior
+    public class FlyRocketPowered : IFlyBehavior
     {
-        public void Quacking()
+        public void Fly()
         {
-            Console.WriteLine("<< Silence >>");
+            Console.WriteLine("I'm flying with a rocket!");
         }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Strategy.Ducks
 {
+    /// <summary>
+	/// abstract base class of Ducks
+	/// </summary>
     public abstract class Duck
     {
         protected IFlyBehavior flyBehavior;

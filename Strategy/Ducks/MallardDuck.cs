@@ -3,6 +3,9 @@ using Strategy.Behaviors.QuackBehaviors;
 
 namespace Strategy.Ducks
 {
+    /// <summary>
+	/// MallardDuck class
+	/// </summary>
     public class MallardDuck : Duck
     {
         public MallardDuck()

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Strategy.Behaviors.QuackBehaviors
 {
+    /// <summary>
+    /// Squeak
+    /// </summary>
     public class Squeak : IQuackBehavior
     {
         public void Quacking()

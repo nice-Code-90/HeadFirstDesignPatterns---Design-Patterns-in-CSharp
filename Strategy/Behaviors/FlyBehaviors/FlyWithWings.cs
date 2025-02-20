@@ -2,6 +2,9 @@
 
 namespace Strategy.Behaviors.FlyBehaviors
 {
+    /// <summary>
+	/// FlyWithWings
+	/// </summary>
     public class FlyWithWings : IFlyBehavior
     {
         public void Fly()

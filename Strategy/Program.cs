@@ -1,4 +1,5 @@
-﻿using Strategy.Ducks;
+﻿using Strategy.Behaviors.FlyBehaviors;
+using Strategy.Ducks;
 
 public class MiniDuckSimulator
 {
@@ -7,6 +8,7 @@ public class MiniDuckSimulator
         Duck mallard = new MallardDuck();
         mallard.PerformQuack();
         mallard.PerformFly();
+
         Duck model = new ModelDuck();
         model.PerformFly();
         model.SetFlyBehavior(new FlyRocketPowered());

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Strategy.Interfaces
 {
+    /// <summary>
+	/// IQuackBehavior interface for quacking behaviors
+	/// </summary>
     public interface IQuackBehavior
     {
         public void Quacking();
