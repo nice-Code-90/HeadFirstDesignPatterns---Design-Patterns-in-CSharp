@@ -1,39 +1,51 @@
 ﻿using Observer.WeatherMonitoring.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Observer.WeatherMonitoring.Subjects
 {
-    public class WeatherData : ISubject
+    public class WeatherData : IObservable<WeatherData>
     {
-        private readonly List<IObserver> observers;
+        private readonly List<IObserver<WeatherData>> observers;
         private float temperature;
         private float humidity;
         private float pressure;
 
         public WeatherData()
         {
-            observers = new List<IObserver>();
+            observers = new List<IObserver<WeatherData>>();
         }
 
-        public void RegisterObserver(IObserver observer)
+        public IDisposable Subscribe(IObserver<WeatherData> observer)
         {
-            observers.Add(observer);
+            if (!observers.Contains(observer))
+                observers.Add(observer);
+            return new Unsubscriber(observers, observer);
         }
 
-        public void RemoveObserver(IObserver observer)
+        private class Unsubscriber : IDisposable
         {
-            observers.Remove(observer);
+            private readonly List<IObserver<WeatherData>> _observers;
+            private readonly IObserver<WeatherData> _observer;
+
+            public Unsubscriber(List<IObserver<WeatherData>> observers, IObserver<WeatherData> observer)
+            {
+                _observers = observers;
+                _observer = observer;
+            }
+
+            public void Dispose()
+            {
+                if (_observer != null && _observers.Contains(_observer))
+                    _observers.Remove(_observer);
+            }
         }
 
         public void NotifyObservers()
         {
-            foreach (IObserver observer in observers)
+            foreach (var observer in observers)
             {
-                observer.Update(temperature, humidity, pressure);
+                observer.OnNext(this);
             }
         }
 
@@ -49,5 +61,11 @@ namespace Observer.WeatherMonitoring.Subjects
             this.pressure = pressure;
             MeasurementsChanged();
         }
+
+        public float GetTemperature() => temperature;
+
+        public float GetHumidity() => humidity;
+
+        public float GetPressure() => pressure;
     }
 }

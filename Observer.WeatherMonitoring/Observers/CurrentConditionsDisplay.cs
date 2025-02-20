@@ -1,29 +1,50 @@
-﻿using Observer.WeatherMonitoring.Interfaces;
+﻿using System;
+using Observer.WeatherMonitoring.Interfaces;
+using Observer.WeatherMonitoring.Subjects;
 
 namespace Observer.WeatherMonitoring.Observers
 {
-    public class CurrentConditionsDisplay : IObserver, IDisplayElement
+    public class CurrentConditionsDisplay : IObserver<WeatherData>, IDisplayElement
     {
         private float temperature;
         private float humidity;
-        private readonly ISubject weatherData;
+        private IDisposable subscription;
 
-        public CurrentConditionsDisplay(ISubject weatherData)
+        public CurrentConditionsDisplay()
         {
-            this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
         }
 
-        public void Update(float temperature, float humidity, float pressure)
+        public void Subscribe(IObservable<WeatherData> provider)
         {
-            this.temperature = temperature;
-            this.humidity = humidity;
+            if (provider != null)
+                subscription = provider.Subscribe(this);
+        }
+
+        public void OnNext(WeatherData value)
+        {
+            this.temperature = value.GetTemperature();
+            this.humidity = value.GetHumidity();
             Display();
+        }
+
+        public void OnError(Exception error)
+        {
+            // Error handling
+        }
+
+        public void OnCompleted()
+        {
+            // Cleanup
         }
 
         public void Display()
         {
             Console.WriteLine($"Current conditions: {temperature}F degrees and {humidity}% humidity");
+        }
+
+        public void Unsubscribe()
+        {
+            subscription?.Dispose();
         }
     }
 }
