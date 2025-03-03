@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator.StarbuzzCoffee", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFactory.PizzaStore", "SimpleFactory.PizzaStore\SimpleFactory.PizzaStore.csproj", "{F35AD596-2DA9-73C3-94B5-3890655BBD59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethod.PizzaStore", "FactoryMethod.PizzaStore\FactoryMethod.PizzaStore.csproj", "{859830FE-EF6B-4F03-89DC-C4C5AAB85F47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F35AD596-2DA9-73C3-94B5-3890655BBD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F35AD596-2DA9-73C3-94B5-3890655BBD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F35AD596-2DA9-73C3-94B5-3890655BBD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859830FE-EF6B-4F03-89DC-C4C5AAB85F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859830FE-EF6B-4F03-89DC-C4C5AAB85F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859830FE-EF6B-4F03-89DC-C4C5AAB85F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859830FE-EF6B-4F03-89DC-C4C5AAB85F47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

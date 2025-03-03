@@ -18,3 +18,4 @@ namespace Factory.PizzaStore.Pizzas
             Toppings.Add("Grated parmesan cheese");
         }
     }
+}

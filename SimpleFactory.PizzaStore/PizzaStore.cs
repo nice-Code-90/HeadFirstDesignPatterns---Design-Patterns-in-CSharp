@@ -3,7 +3,7 @@ using Factory.PizzaStore.Pizzas;
 
 namespace Factory.PizzaStore
 {
-    public abstract class PizzaStore
+    public class PizzaStore
     {
         private SimplePizzaFactory factory;
 
